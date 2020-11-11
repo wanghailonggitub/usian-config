@@ -1,0 +1,33 @@
+spring:
+ rabbitmq:
+    host: 192.168.139.139
+    username: admin
+    password: 1111
+    virtual-host: /
+  application:
+    name: usian-item-web111
+server:
+  port: 8091
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/
+fdfs:
+  so-timeout: 1501 # 超时时间
+  connect-timeout: 601 # 连接超时时间
+  thumb-image: # 缩略图
+    width: 60
+    height: 60
+  tracker-list: # tracker地址：你的虚拟机服务器地址+端口（默认是22122）
+    - 192.168.139.131:22122
+feign:
+  hystrix:
+    enabled: true #开启降级处理
+
+hystrix:
+  command:
+    default:
+      circuitBreaker:
+        requestVolumeThreshold: 3 #断容器最小请求数，达到这个值过后才开始计算是否打开熔断器
+        errorThresholdPercentage: 5 #错误百分比条件，达到熔断器最小请求数后错误率达到百分之多少后打开熔断器
+        sleepWindowInMilliseconds: 5000  #默认5秒; 熔断器打开后多少秒后 熔断状态变成半熔断状态(对该微服务进行一次请求尝试，不成功则状态改成熔断，成功则关闭熔断器
