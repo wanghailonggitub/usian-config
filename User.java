@@ -11,14 +11,6 @@ import java.util.Objects;
  * @date 2020/4/14 12:02
  * @email wangchanghao_xy@189.com
  */
-public class User {
-    //主键
-    private String userId;
-    //手机号
-    private String userPhone;
-    //最后操作时间
-    private Date lastOperateTime;
-    //创建时间
     private Date createTime = new Date();
     //更新时间
     private Date updateTime = new Date();
